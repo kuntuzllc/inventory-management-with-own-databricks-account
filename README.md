@@ -135,3 +135,4 @@ Optional `table_prefix` values are applied only to the inventory tables.
 ## Important implementation note
 
 This repo uses raw SQL for Databricks. Repositories are the only layer allowed to execute SQL so route handlers stay thin and the service layer remains focused on business logic.
+

@@ -1,3 +1,4 @@
+﻿import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -6,8 +7,34 @@ import { z } from 'zod';
 
 const currentFile = fileURLToPath(import.meta.url);
 const currentDir = path.dirname(currentFile);
-const serverDir = path.resolve(currentDir, '..', '..');
-const repoRoot = path.resolve(serverDir, '..', '..');
+
+function findAncestorContaining(startDir: string, relativePath: string) {
+  let current = path.resolve(startDir);
+
+  while (true) {
+    if (fs.existsSync(path.join(current, relativePath))) {
+      return current;
+    }
+
+    const parent = path.dirname(current);
+
+    if (parent === current) {
+      return null;
+    }
+
+    current = parent;
+  }
+}
+
+const repoRoot =
+  findAncestorContaining(process.cwd(), 'databricks') ??
+  findAncestorContaining(currentDir, 'databricks') ??
+  path.resolve(currentDir, '..', '..', '..', '..');
+
+const detectedServerDir = path.join(repoRoot, 'apps', 'server');
+const serverDir = fs.existsSync(detectedServerDir)
+  ? detectedServerDir
+  : path.resolve(currentDir, '..', '..');
 
 dotenv.config({ path: path.join(serverDir, '.env') });
 dotenv.config({ path: path.join(repoRoot, '.env') });
