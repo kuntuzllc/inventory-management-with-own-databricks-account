@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.log
+apps/server/uploads
+apps/server/tmp
+apps/server/.env
+apps/web/.env

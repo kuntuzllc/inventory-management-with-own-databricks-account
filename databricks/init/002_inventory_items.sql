@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS {{INVENTORY_ITEMS_TABLE}} (
+  id STRING NOT NULL,
+  user_id STRING NOT NULL,
+  item_name STRING NOT NULL,
+  sku STRING NOT NULL,
+  category STRING,
+  brand STRING,
+  supplier STRING,
+  purchase_date DATE,
+  purchase_price DECIMAL(18, 2),
+  unit_cost DECIMAL(18, 2) NOT NULL,
+  unit_selling_price DECIMAL(18, 2) NOT NULL,
+  quantity_in_stock BIGINT NOT NULL,
+  total_inventory_value DECIMAL(18, 2) NOT NULL,
+  status STRING NOT NULL,
+  item_condition STRING,
+  notes STRING,
+  serial_or_batch_number STRING,
+  image_url STRING,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  last_sold_at TIMESTAMP
+) USING DELTA

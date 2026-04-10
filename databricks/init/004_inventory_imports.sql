@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS {{INVENTORY_IMPORTS_TABLE}} (
+  id STRING NOT NULL,
+  user_id STRING NOT NULL,
+  file_name STRING NOT NULL,
+  file_type STRING NOT NULL,
+  total_rows BIGINT NOT NULL,
+  success_count BIGINT NOT NULL,
+  failure_count BIGINT NOT NULL,
+  mapping_json STRING NOT NULL,
+  summary_json STRING NOT NULL,
+  created_at TIMESTAMP NOT NULL
+) USING DELTA

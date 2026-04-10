@@ -1,0 +1,18 @@
+{
+  "name": "inventory-self",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/web",
+    "apps/server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n web,server -c cyan,green \"npm run dev -w apps/web\" \"npm run dev -w apps/server\"",
+    "build": "npm run build -w apps/web && npm run build -w apps/server",
+    "lint": "npm run lint -w apps/web && npm run lint -w apps/server",
+    "format": "npm run format -w apps/web && npm run format -w apps/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

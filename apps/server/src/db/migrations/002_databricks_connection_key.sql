@@ -1,0 +1,1 @@
+﻿-- Databricks-only deployment: legacy app database migration retained as a placeholder and not executed.

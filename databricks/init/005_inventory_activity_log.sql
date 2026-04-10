@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS {{INVENTORY_ACTIVITY_LOG_TABLE}} (
+  id STRING NOT NULL,
+  user_id STRING NOT NULL,
+  inventory_item_id STRING,
+  activity_type STRING NOT NULL,
+  description STRING NOT NULL,
+  metadata_json STRING,
+  created_at TIMESTAMP NOT NULL
+) USING DELTA

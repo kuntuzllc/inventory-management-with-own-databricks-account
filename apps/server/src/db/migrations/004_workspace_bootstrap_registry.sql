@@ -1,0 +1,1 @@
+﻿-- Databricks-only deployment: legacy bootstrap registry migration retained as a placeholder and not executed.
