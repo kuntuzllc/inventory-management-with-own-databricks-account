@@ -14,7 +14,21 @@
   User
 } from '../types/models';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
+function getApiBaseUrl() {
+  const configured = import.meta.env.VITE_API_URL?.trim();
+
+  if (configured) {
+    return configured;
+  }
+
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+
+  return 'http://localhost:4000';
+}
+
+const API_BASE_URL = getApiBaseUrl();
 
 export class ApiError extends Error {
   status: number;
@@ -267,5 +281,3 @@ export const api = {
       })
   }
 };
-
-
